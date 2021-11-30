@@ -30,6 +30,9 @@ list.add(2)
 - Number of lines may be more
 
 
-   
+### Questions
+- Is it better to initialize the List in the constructor or during initialization itself
+  - Usually initialization invokes at declaration and then the constructor, if you have another method which uses 
+    the collection it may result in NullPointerException
 
 
