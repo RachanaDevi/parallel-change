@@ -7,7 +7,6 @@ import static org.junit.Assert.assertEquals;
 
 public class ShoppingCartTest {
 
-
     @Test
     public void singleItem_numberOfProductsInTheCart() {
         ShoppingCart shoppingCart = new ShoppingCart();
@@ -25,7 +24,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void singleItem_hasDiscountIfContainsAtLeastOneProductWorthAtLeast100() throws Exception {
+    public void singleItem_hasDiscountIfContainsAtLeastOneProductWorthAtLeast100() {
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.add(100);
 
@@ -43,8 +42,36 @@ public class ShoppingCartTest {
     @Test
     public void multipleItems_numberOfProductsInTheCart() {
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.add(1, 2);
+        shoppingCart.add(1);
+        shoppingCart.add(2);
 
         assertEquals(2, shoppingCart.numberOfProducts());
+    }
+
+    @Test
+    public void multipleItems_totalPrice() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.add(1);
+        shoppingCart.add(2);
+
+        assertEquals(3, shoppingCart.calculateTotalPrice());
+    }
+
+    @Test
+    public void multipleItems_hasDiscountIfContainsAtLeastOneProductWorthAtLeast100() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.add(100);
+        shoppingCart.add(90);
+
+        Assert.assertTrue(shoppingCart.hasDiscount());
+    }
+
+    @Test
+    public void multipleItems_doesNotHaveDiscountIfContainsNoProductsWorthAtLeast100() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.add(99);
+        shoppingCart.add(-100);
+
+        Assert.assertFalse(shoppingCart.hasDiscount());
     }
 }
