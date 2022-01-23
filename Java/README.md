@@ -1,4 +1,4 @@
-## Parallel Change Kata
+# Parallel Change Kata
 
 - Java version-8
 - Gradle version 6.7
@@ -7,7 +7,7 @@
 There is a class known as Shopping Cart The class should handle multiple int items instead of a single one Tests have
 already been written
 
-### CODE SMELLS:
+## CODE SMELLS:
 
 - There is a restriction in the signature, it does not provide extensibility?
 - Did not change the signature of the already existing method
@@ -25,7 +25,11 @@ already been written
     - Should it be the responsibility of hasDiscount to compare every price and see if it is greater than 100?
 - Price can also be Float or Double, it does not make sense for it to be an integer
 
-## Signature discussions:
+--- 
+
+## ShoppingCart
+
+### Signature discussions:
 
 ```java
 list.add(1,2,3)
@@ -74,9 +78,45 @@ list.add(List.of(1,2,3))
     - Usually initialization invokes at declaration and then the constructor, if you have another method which uses the
       collection it may result in NullPointerException
 
+---
+
+## Price
+
+- Price is a value object which has got the value in double
+- The reason why it is a value object is because the value of 2 Price objects are equal if their value is equal
+- Price provides a method to check if it is greater than 99
+- It provides a method to add another price which returns a new price
+
+--- 
+
+### Questions
+
+- Is it better to name a method as greaterThanEqualToHundred() or greaterThanNinetyNine(), question statement that time
+  had mentioned >=100
+  ##### greaterThanNinetyNine() method
+  ###### Advantages of greaterThanNinetyNine()
+    - smaller method name
+
+  ###### Disadvantages of greaterThanNinetyNine()
+    - the business use case had said >=100, so will it take more time for the user to read it and is it not evident at
+      first glance?
+
+  ##### greaterThanEqualToHundred()
+  ###### Advantages:
+    - it is as it is given by the business use case
+
+  ###### Disadvantages:
+    - a longer method name, takes more time to read
+
+- what should the constant LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT be named as such in Price class? or should it just be 100?
+
 ### Notes:
 
 - Depending on what the user wants or what you are making, you can build the api for add. It can be
     - list.add(1,2,3) :  if the user puts things all at one
     - list.add(1); list.add(2): if user puts one thing at a time
     - list.add(List.of(1,2)) : if user puts a list in the cart
+
+- The reason the Price has a method named `greaterThanNinetyNine` instead of `hasDiscount` is because why should a price
+  know whether its value is eligible for discount. Your 10 rupees note does not have the knowledge whether it will get
+  discount in Amazon or not
