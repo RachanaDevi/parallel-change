@@ -10,7 +10,7 @@ public class ShoppingCartTest {
     @Test
     public void singleItem_numberOfProductsInTheCart() {
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.add(10);
+        shoppingCart.add(10.2);
 
         assertEquals(1, shoppingCart.numberOfProducts());
     }
@@ -18,15 +18,15 @@ public class ShoppingCartTest {
     @Test
     public void singleItem_totalPrice() {
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.add(10);
+        shoppingCart.add(10.01);
 
-        assertEquals(10, shoppingCart.calculateTotalPrice());
+        assertEquals(10.01, shoppingCart.calculateTotalPrice(), 0);
     }
 
     @Test
     public void singleItem_hasDiscountIfContainsAtLeastOneProductWorthAtLeast100() {
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.add(100);
+        shoppingCart.add(100.0);
 
         Assert.assertTrue(shoppingCart.hasDiscount());
     }
@@ -34,7 +34,7 @@ public class ShoppingCartTest {
     @Test
     public void singleItem_doesNotHaveDiscountIfContainsNoProductsWorthAtLeast100() {
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.add(99);
+        shoppingCart.add(99.0);
 
         Assert.assertFalse(shoppingCart.hasDiscount());
     }
@@ -54,14 +54,14 @@ public class ShoppingCartTest {
         shoppingCart.add(1);
         shoppingCart.add(2);
 
-        assertEquals(3, shoppingCart.calculateTotalPrice());
+        assertEquals(3, shoppingCart.calculateTotalPrice(), 0.0);
     }
 
     @Test
     public void multipleItems_hasDiscountIfContainsAtLeastOneProductWorthAtLeast100() {
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.add(100);
-        shoppingCart.add(90);
+        shoppingCart.add(100.1);
+        shoppingCart.add(90.2);
 
         Assert.assertTrue(shoppingCart.hasDiscount());
     }
@@ -69,7 +69,7 @@ public class ShoppingCartTest {
     @Test
     public void multipleItems_doesNotHaveDiscountIfContainsNoProductsWorthAtLeast100() {
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.add(99);
+        shoppingCart.add(99.2);
         shoppingCart.add(-100);
 
         Assert.assertFalse(shoppingCart.hasDiscount());

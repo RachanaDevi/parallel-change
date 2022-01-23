@@ -6,10 +6,10 @@ import java.util.List;
 public class ShoppingCart {
 
     private static final int LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT = 100;
-    private final List<Integer> prices = new ArrayList<>();
+    private final List<Double> prices = new ArrayList<>();
 
-    public int calculateTotalPrice() {
-        return prices.stream().reduce(Integer::sum).get();
+    public double calculateTotalPrice() {
+        return prices.stream().reduce(Double::sum).get();
     }
 
     public boolean hasDiscount() {
@@ -20,7 +20,7 @@ public class ShoppingCart {
         return prices.size();
     }
 
-    public void add(int price) {
+    public void add(double price) {
         this.prices.add(price);
     }
 }
