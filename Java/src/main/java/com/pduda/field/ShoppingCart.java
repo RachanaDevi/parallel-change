@@ -5,6 +5,7 @@ import java.util.List;
 
 public class ShoppingCart {
 
+    private static final int LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT = 100;
     private final List<Integer> prices = new ArrayList<>();
 
     public int calculateTotalPrice() {
@@ -12,7 +13,7 @@ public class ShoppingCart {
     }
 
     public boolean hasDiscount() {
-        return prices.stream().anyMatch(price -> price >= 100);
+        return prices.stream().anyMatch(price -> price >= LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT);
     }
 
     public int numberOfProducts() {
