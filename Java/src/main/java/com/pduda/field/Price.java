@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Price {
 
     private static final int LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT = 100;
-    private final double value;
+    private final Double value;
 
     private Price(double value) {
         this.value = value;
@@ -34,5 +34,9 @@ public class Price {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    public int integerValue() {
+        return this.value.intValue();
     }
 }

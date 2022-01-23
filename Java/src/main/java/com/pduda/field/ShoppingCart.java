@@ -7,8 +7,8 @@ public class ShoppingCart {
 
     private final List<Price> prices = new ArrayList<>();
 
-    public Price calculateTotalPrice() {
-        return prices.stream().reduce(Price::add).get();
+    public int calculateTotalPrice() {
+        return prices.stream().reduce(Price::add).get().integerValue();
     }
 
     public boolean hasDiscount() {

@@ -35,4 +35,11 @@ public class PriceTest {
 
         assertEquals(price, otherPrice);
     }
+
+    @Test
+    public void shouldReturnIntegerValueOfPrice() {
+        Price price = Price.from(10.21);
+
+        assertEquals(10, price.integerValue());
+    }
 }

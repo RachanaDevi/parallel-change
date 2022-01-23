@@ -120,3 +120,6 @@ list.add(List.of(1,2,3))
 - The reason the Price has a method named `greaterThanNinetyNine` instead of `hasDiscount` is because why should a price
   know whether its value is eligible for discount. Your 10 rupees note does not have the knowledge whether it will get
   discount in Amazon or not
+
+- As another client `ImagineThisIsAClientInADifferentRepository` is using the method calculateTotalPrice() we can't
+  alter return type to return Price
