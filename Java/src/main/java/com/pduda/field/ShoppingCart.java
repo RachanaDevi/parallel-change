@@ -13,7 +13,14 @@ public class ShoppingCart {
     }
 
     public boolean hasDiscount() {
-        return prices.stream().anyMatch(price -> price >= LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT);
+        for (Double price : prices) {
+            if (priceHasDiscount(price)) return true;
+        }
+        return false;
+    }
+
+    private static boolean priceHasDiscount(Double price) {
+        return price >= LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT;
     }
 
     public int numberOfProducts() {
