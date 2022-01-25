@@ -12,10 +12,7 @@ public class ShoppingCart {
     }
 
     public boolean hasDiscount() {
-        for (Price price : prices) {
-            if (price.greaterThanNinetyNine()) return true;
-        }
-        return false;
+        return prices.stream().anyMatch(Price::greaterThanNinetyNine);
     }
 
     public int numberOfProducts() {
