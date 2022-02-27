@@ -5,21 +5,21 @@ import java.util.List;
 
 public class ShoppingCart {
 
-    private final List<Price> prices = new ArrayList<>();
+    private final List<Item> items = new ArrayList<>();
 
     public int calculateTotalPrice() {
-        return prices.stream().reduce(Price::add).get().integerValue();
+        return items.stream().reduce(Item::add).get().integerValue();
     }
 
     public boolean hasDiscount() {
-        return prices.stream().anyMatch(Price::greaterThanNinetyNine);
+        return items.stream().anyMatch(Item::greaterThanNinetyNine);
     }
 
     public int numberOfProducts() {
-        return prices.size();
+        return items.size();
     }
 
-    public void add(double price) {
-        this.prices.add(Price.from(price));
+    public void add(double itemPrice) {
+        this.items.add(Item.from(itemPrice));
     }
 }
