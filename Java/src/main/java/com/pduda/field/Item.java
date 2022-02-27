@@ -15,7 +15,7 @@ public class Item {
         return new Item(value);
     }
 
-    public boolean greaterThanNinetyNine() {
+    public boolean isEligibleForDiscount() {
         return this.value >= LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT;
     }
 

@@ -10,14 +10,14 @@ public class ItemTest {
     public void shouldReturnTrueForCheckForPriceGreaterThanNinetyNine() {
         Item item = Item.from(100.0);
 
-        assertTrue(item.greaterThanNinetyNine());
+        assertTrue(item.isEligibleForDiscount());
     }
 
     @Test
     public void shouldReturnFalseForCheckForPriceGreaterThanNinetyNine() {
         Item item = Item.from(99.0);
 
-        assertFalse(item.greaterThanNinetyNine());
+        assertFalse(item.isEligibleForDiscount());
     }
 
     @Test

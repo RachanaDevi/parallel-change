@@ -12,7 +12,7 @@ public class ShoppingCart {
     }
 
     public boolean hasDiscount() {
-        return items.stream().anyMatch(Item::greaterThanNinetyNine);
+        return items.stream().anyMatch(Item::isEligibleForDiscount);
     }
 
     public int numberOfProducts() {

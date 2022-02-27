@@ -15,14 +15,14 @@ already been written
 
 ```java
     public boolean hasDiscount(){
-        return prices.stream().anyMatch(price->price>=100);
+        return prices.stream().anyMatch(item->item>=100);
         }
 ```
 
 - ShoppingCart putting prices does not make sense, maybe an abstraction such as item is missing
-- Even though calculation of `hasDiscount` is a one liner it has a concept of price and it knows about price and its
+- Even though calculation of `hasDiscount` is a one liner it has a concept of item and it knows about item and its
   comparison
-    - Should it be the responsibility of hasDiscount to compare every price and see if it is greater than 100?
+    - Should it be the responsibility of hasDiscount to compare every item and see if it is greater than 100?
 - Price can also be Float or Double, it does not make sense for it to be an integer
 
 --- 
@@ -46,8 +46,8 @@ list.add(1,2,3)
 - if you forgot to add something, you cannot add it again in the existing array, it will replace it
 
 ```java
-list.add(1)
-        list.add(2)
+list.add(1);
+list.add(2);
 ```
 
 #### Advantages
@@ -85,7 +85,7 @@ list.add(List.of(1,2,3))
 - Price is a value object which has got the value in double
 - The reason why it is a value object is because the value of 2 Price objects are equal if their value is equal
 - Price provides a method to check if it is greater than 99
-- It provides a method to add another price which returns a new price
+- It provides a method to add another item which returns a new item
 
 --- 
 
@@ -107,6 +107,11 @@ list.add(List.of(1,2,3))
 
   ###### Disadvantages:
     - a longer method name, takes more time to read
+  
+## Conclusion
+- both names are not valid for Item. Because no one says Item is greaterThanNinetyNine or greaterThanEqualToHundreded
+- if such a case does occur, the better name would be the one the client uses in the conversation a lot. When they talk about discounts, 
+  do they talk about price being greater than ninety nine, or do they say greater than equal to hundred
 
 - what should the constant LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT be named as such in Price class? or should it just be 100?
 
@@ -117,7 +122,7 @@ list.add(List.of(1,2,3))
     - list.add(1); list.add(2): if user puts one thing at a time
     - list.add(List.of(1,2)) : if user puts a list in the cart
 
-- The reason the Price has a method named `greaterThanNinetyNine` instead of `hasDiscount` is because why should a price
+- The reason the Price has a method named `greaterThanNinetyNine` instead of `hasDiscount` is because why should a item
   know whether its value is eligible for discount. Your 10 rupees note does not have the knowledge whether it will get
   discount in Amazon or not
 
