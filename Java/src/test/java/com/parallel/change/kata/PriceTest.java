@@ -13,6 +13,11 @@ public class PriceTest {
     }
 
     @Test(expected = InvalidItemPriceException.class)
+    public void shouldReturnItemWithNegativeValue() {
+        Price priceWithNegativeValue = Price.from(-10.0);
+    }
+
+    @Test(expected = InvalidItemPriceException.class)
     public void shouldReturnItemWithNull() {
         Price priceWithNullValue = Price.from(null);
     }

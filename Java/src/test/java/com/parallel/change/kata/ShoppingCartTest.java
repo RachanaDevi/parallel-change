@@ -70,7 +70,7 @@ public class ShoppingCartTest {
     public void multipleItems_doesNotHaveDiscountIfContainsNoProductsWorthAtLeast100() {
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.add(Item.from(Price.from(99.2)));
-        shoppingCart.add(Item.from(Price.from(-100.0)));
+        shoppingCart.add(Item.from(Price.from(0.3)));
 
         Assert.assertFalse(shoppingCart.hasDiscount());
     }

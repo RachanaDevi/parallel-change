@@ -150,6 +150,8 @@ list.add(List.of(1,2,3))
 - The method `Item.zeroPrice()` is a value which can be made into a static field and it is not necessary for us to create
   the object all the time
    - Removed Item having zeroPrice as real-life scenarios don't have items having price as zero
+   - Exposed a method in Price class to give zero but the user cannot create price as zero.
+   
   
 - It does not make sense for two items to add together. You don't add 2 soaps together to make one soap with the combined price
   - We add the behaviour in Items to combine all the prices of the items and don't let Item have the responsibility of adding prices
@@ -162,3 +164,9 @@ list.add(List.of(1,2,3))
    - checking if it has the least price eligible for discount
    - logic of adding 2 prices
    - price exposes its price to Item but does not expose the value it has.
+   - Price cannot be created having null and less than equal to zero but Price has a method which gives Price as zero
+      - This zero is used if the total Price is zero and no items are there
+   - User cannot create an item having zero price
+     - Then should it be the responsibility of the Item to check if price is zero or null
+     - Should Price only have the concept which can either be zero or non-zero ?
+    

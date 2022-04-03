@@ -10,13 +10,13 @@ public class InvalidItemPriceExceptionTest {
     public void shouldReturnExceptionMessageWithItemPriceAsZero() {
         InvalidItemPriceException invalidItemPriceException = new InvalidItemPriceException(0.0);
 
-        assertEquals(invalidItemPriceException.getMessage(), "Price of the Item is cannot be null or zero. Price: 0.0");
+        assertEquals(invalidItemPriceException.getMessage(), "Price of the Item is invalid. Price: 0.0");
     }
 
     @Test
     public void shouldReturnExceptionMessageWithItemPriceAsNull() {
         InvalidItemPriceException invalidItemPriceException = new InvalidItemPriceException(null);
 
-        assertEquals(invalidItemPriceException.getMessage(), "Price of the Item is cannot be null or zero. Price: null");
+        assertEquals(invalidItemPriceException.getMessage(), "Price of the Item is invalid. Price: null");
     }
 }

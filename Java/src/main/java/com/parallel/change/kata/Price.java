@@ -16,7 +16,7 @@ public class Price {
     }
 
     public static Price from(Double value) {
-        if (Objects.isNull(value) || value.equals(ZERO))
+        if (Objects.isNull(value) || value <= ZERO)
             throw new InvalidItemPriceException(value);
 
         return new Price(value);
