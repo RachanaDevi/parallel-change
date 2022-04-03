@@ -1,25 +1,29 @@
 package com.pduda.field;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 public class ShoppingCart {
 
-    private final List<Item> items = new ArrayList<>();
+    private final Items items;
 
-    public int calculateTotalPrice() {
-        return items.stream().reduce(Item::add).get().integerValue();
+    public ShoppingCart() {
+        items = new Items();
+    }
+
+    public Double totalPrice() {
+        return items.totalPrice();
     }
 
     public boolean hasDiscount() {
-        return items.stream().anyMatch(Item::isEligibleForDiscount);
+        return items.eligibleForDiscount();
     }
 
     public int numberOfProducts() {
         return items.size();
     }
 
-    public void add(double itemPrice) {
-        this.items.add(Item.from(itemPrice));
+    public void add(Item item) {
+        if (!Objects.isNull(item))
+            this.items.add(item);
     }
 }

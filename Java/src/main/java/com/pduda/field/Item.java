@@ -7,19 +7,25 @@ public class Item {
     private static final int LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT = 100;
     private final Double value;
 
-    private Item(double value) {
+    private Item(Double value) {
         this.value = value;
     }
 
     public static Item from(Double value) {
+        if (Objects.isNull(value))
+            return Item.zeroPrice();
         return new Item(value);
+    }
+
+    public static Item zeroPrice() {
+        return new Item(0.0);
     }
 
     public boolean isEligibleForDiscount() {
         return this.value >= LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT;
     }
 
-    public Item add(Item otherItem) {
+    public Item addPriceOf(Item otherItem) {
         return new Item(this.value + otherItem.value);
     }
 
@@ -36,7 +42,7 @@ public class Item {
         return Objects.hash(value);
     }
 
-    public int integerValue() {
-        return this.value.intValue();
+    public Double value() {
+        return this.value;
     }
 }
