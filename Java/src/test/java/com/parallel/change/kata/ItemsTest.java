@@ -12,7 +12,7 @@ public class ItemsTest {
         items.add(Item.from(Price.from(100.00)));
         items.add(Item.from(Price.from(102.10)));
 
-        assertEquals(202.10, items.totalPrice(), 0);
+        assertEquals(Price.from(202.10), items.totalPrice());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class ItemsTest {
     public void shouldReturnTotalPriceAsZeroIfThereAreNoItemsPresent() {
         Items items = new Items();
 
-        assertEquals(0.0, items.totalPrice(), 0);
+        assertEquals(Price.zero(), items.totalPrice());
     }
 
     @Test

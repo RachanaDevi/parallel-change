@@ -13,8 +13,8 @@ public class Items {
         items = new ArrayList<>();
     }
 
-    public Double totalPrice() {
-        return prices().reduce(Price.ZERO, Double::sum);
+    public Price totalPrice() {
+        return prices().reduce(Price::add).orElse(Price.zero());
     }
 
     public boolean eligibleForDiscount() {
@@ -30,10 +30,7 @@ public class Items {
             items.add(item);
     }
 
-    // breaking encapsulation as we are exposing value from Item,
-    // but we can put it in the same package so
-    // that is not accessible from outside, hence saving it
-    private Stream<Double> prices() {
-        return items.stream().map(Item::value);
+    private Stream<Price> prices() {
+        return items.stream().map(Item::price);
     }
 }

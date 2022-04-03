@@ -20,7 +20,7 @@ public class ShoppingCartTest {
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.add(Item.from(Price.from(10.01)));
 
-        assertEquals(10.01, shoppingCart.totalPrice(), 0);
+        assertEquals(Price.from(10.01), shoppingCart.totalPrice());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class ShoppingCartTest {
         shoppingCart.add(Item.from(Price.from(1.0)));
         shoppingCart.add(Item.from(Price.from(2.0)));
 
-        assertEquals(3.0, shoppingCart.totalPrice(), 0);
+        assertEquals(Price.from(3.0), shoppingCart.totalPrice());
     }
 
     @Test

@@ -160,3 +160,5 @@ list.add(List.of(1,2,3))
    - checking if it is null
    - checking if it was zero
    - checking if it has the least price eligible for discount
+   - logic of adding 2 prices
+   - price exposes its price to Item but does not expose the value it has.

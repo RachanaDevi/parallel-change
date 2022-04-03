@@ -10,7 +10,7 @@ public class ShoppingCart {
         items = new Items();
     }
 
-    public Double totalPrice() {
+    public Price totalPrice() {
         return items.totalPrice();
     }
 

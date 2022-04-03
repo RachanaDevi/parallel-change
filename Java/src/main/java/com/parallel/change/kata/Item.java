@@ -31,7 +31,7 @@ public class Item {
         return Objects.hash(price);
     }
 
-    Double value() {
-        return this.price.value();
+    Price price() {
+        return this.price;
     }
 }

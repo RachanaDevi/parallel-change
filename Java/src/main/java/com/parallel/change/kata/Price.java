@@ -8,7 +8,8 @@ public class Price {
 
     private final Double value;
     private static final int LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT = 100;
-    public static final double ZERO = 0.0;
+    private static final double ZERO = 0.0;
+    private static final Price ZERO_PRICE = new Price(ZERO);
 
     private Price(Double value) {
         this.value = value;
@@ -21,8 +22,8 @@ public class Price {
         return new Price(value);
     }
 
-    Double value() {
-        return value;
+    static Price zero() {
+        return ZERO_PRICE;
     }
 
     @Override
@@ -40,5 +41,9 @@ public class Price {
 
     public boolean isEligibleForDiscount() {
         return this.value >= LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT;
+    }
+
+    public Price add(Price otherPrice) {
+        return new Price(this.value + otherPrice.value);
     }
 }
