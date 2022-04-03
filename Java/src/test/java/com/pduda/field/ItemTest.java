@@ -21,14 +21,6 @@ public class ItemTest {
     }
 
     @Test
-    public void shouldAddTwoPrices() {
-        Item item = Item.from(10.02);
-        Item otherItem = Item.from(12.23);
-
-        assertEquals(Item.from(22.25), item.addPriceOf(otherItem));
-    }
-
-    @Test
     public void shouldEquateTwoPricesHavingSameValues() {
         Item item = Item.from(10.02);
         Item otherItem = Item.from(10.02);
@@ -40,7 +32,7 @@ public class ItemTest {
     public void shouldReturnValueOfPrice() {
         Item item = Item.from(10.21);
 
-        assertEquals(10, item.value(), 0);
+        assertEquals(10.21, item.value(), 0);
     }
 
     @Test

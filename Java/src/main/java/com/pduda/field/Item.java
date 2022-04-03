@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Item {
 
     private static final int LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT = 100;
+    private static final Item ITEM_WITH_ZERO_PRICE = new Item(0.0);
     private final Double value;
 
     private Item(Double value) {
@@ -18,15 +19,11 @@ public class Item {
     }
 
     public static Item zeroPrice() {
-        return new Item(0.0);
+        return ITEM_WITH_ZERO_PRICE;
     }
 
     public boolean isEligibleForDiscount() {
         return this.value >= LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT;
-    }
-
-    public Item addPriceOf(Item otherItem) {
-        return new Item(this.value + otherItem.value);
     }
 
     @Override
@@ -42,7 +39,7 @@ public class Item {
         return Objects.hash(value);
     }
 
-    public Double value() {
+    Double value() {
         return this.value;
     }
 }

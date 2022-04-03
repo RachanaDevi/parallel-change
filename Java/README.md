@@ -128,3 +128,30 @@ list.add(List.of(1,2,3))
 
 - As another client `ImagineThisIsAClientInADifferentRepository` is using the method calculateTotalPrice() we can't
   alter return type to return Price
+  
+#### Points Regarding Validation
+- There can be use-cases when an invalid input is put to make an Object
+   - Throw Exception and stop the flow
+   - Have a Null check
+
+#### Different scenarios for validation
+- Let's consider the use-case where the client has said that it wants to throw an exception
+  - So in the constructor do we provide the check, with if condition of
+      Objects.requireNonNull
+      Assert.checkNonNull ( you have to enable assertion )
+  - If there is a lot of behaviour regarding null checks, for eg:
+     - We have an employee which is not associated with a department
+       - So, we will have to put null check and see if the employee belongs to a dept, and the default use-case can be 
+         staffing-department
+       - If so many behaviours are associated then we may to create a NullObject which will have the default behaviour 
+         [Null Object Pattern](https://en.wikipedia.org/wiki/Null_object_pattern)
+         - This class is a singelton as all the objects created from it will be the same
+         
+- The method `Item.zeroPrice()` is a value which can be made into a static field and it is not necessary for us to create
+  the object all the time
+
+  
+- It does not make sense for two items to add together. You don't add 2 soaps together to make one soap with the combined price
+  - We add the behaviour in Items to combine all the prices of the items and don't let Item have the responsibility of adding prices
+    - If needed this may require another encapsulation Price later on, for now it is fine.
+    
