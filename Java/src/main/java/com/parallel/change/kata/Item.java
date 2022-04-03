@@ -1,11 +1,13 @@
-package com.pduda.field;
+package com.parallel.change.kata;
+
+import com.parallel.change.kata.exception.InvalidItemPriceException;
 
 import java.util.Objects;
 
 public class Item {
 
     private static final int LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT = 100;
-    private static final Item ITEM_WITH_ZERO_PRICE = new Item(0.0);
+    private static final Double ZERO_PRICE = 0.0;
     private final Double value;
 
     private Item(Double value) {
@@ -13,13 +15,10 @@ public class Item {
     }
 
     public static Item from(Double value) {
-        if (Objects.isNull(value))
-            return Item.zeroPrice();
-        return new Item(value);
-    }
+        if (Objects.isNull(value) || value.equals(ZERO_PRICE))
+            throw new InvalidItemPriceException(value);
 
-    public static Item zeroPrice() {
-        return ITEM_WITH_ZERO_PRICE;
+        return new Item(value);
     }
 
     public boolean isEligibleForDiscount() {

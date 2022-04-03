@@ -1,5 +1,6 @@
-package com.pduda.field;
+package com.parallel.change.kata;
 
+import com.parallel.change.kata.exception.InvalidItemPriceException;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -35,27 +36,14 @@ public class ItemTest {
         assertEquals(10.21, item.value(), 0);
     }
 
-    @Test
+    @Test(expected = InvalidItemPriceException.class)
     public void shouldReturnItemWithZeroValue() {
-        Item emptyItem = Item.zeroPrice();
-
         Item expectedItem = Item.from(0.0);
-
-        assertEquals(expectedItem, emptyItem);
     }
 
-    @Test
+    @Test(expected = InvalidItemPriceException.class)
     public void shouldReturnItemWithNull() {
         Item emptyItem = Item.from(null);
-
-        assertEquals(emptyItem, Item.zeroPrice());
-    }
-
-    @Test
-    public void shouldReturnValueOfItemWithZeroPrice() {
-        Item itemWithZeroPrice = Item.zeroPrice();
-
-        assertEquals(itemWithZeroPrice.value(), 0.0, 0);
     }
 
 }

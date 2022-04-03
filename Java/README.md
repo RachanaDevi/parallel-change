@@ -149,9 +149,8 @@ list.add(List.of(1,2,3))
          
 - The method `Item.zeroPrice()` is a value which can be made into a static field and it is not necessary for us to create
   the object all the time
-
+   - Removed Item having zeroPrice as real-life scenarios don't have items having price as zero
   
 - It does not make sense for two items to add together. You don't add 2 soaps together to make one soap with the combined price
   - We add the behaviour in Items to combine all the prices of the items and don't let Item have the responsibility of adding prices
     - If needed this may require another encapsulation Price later on, for now it is fine.
-    

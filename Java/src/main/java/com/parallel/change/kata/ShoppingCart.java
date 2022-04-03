@@ -1,4 +1,4 @@
-package com.pduda.field;
+package com.parallel.change.kata;
 
 import java.util.Objects;
 
