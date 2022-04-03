@@ -154,3 +154,9 @@ list.add(List.of(1,2,3))
 - It does not make sense for two items to add together. You don't add 2 soaps together to make one soap with the combined price
   - We add the behaviour in Items to combine all the prices of the items and don't let Item have the responsibility of adding prices
     - If needed this may require another encapsulation Price later on, for now it is fine.
+
+### Price class
+- Price class was later introduced because we saw a lot of behaviour in Item class which was related to Prices
+   - checking if it is null
+   - checking if it was zero
+   - checking if it has the least price eligible for discount

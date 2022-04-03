@@ -9,41 +9,30 @@ public class ItemTest {
 
     @Test
     public void shouldReturnTrueForCheckForPriceGreaterThanNinetyNine() {
-        Item item = Item.from(100.0);
+        Item item = Item.from(Price.from(100.0));
 
         assertTrue(item.isEligibleForDiscount());
     }
 
     @Test
     public void shouldReturnFalseForCheckForPriceGreaterThanNinetyNine() {
-        Item item = Item.from(99.0);
+        Item item = Item.from(Price.from(99.0));
 
         assertFalse(item.isEligibleForDiscount());
     }
 
     @Test
     public void shouldEquateTwoPricesHavingSameValues() {
-        Item item = Item.from(10.02);
-        Item otherItem = Item.from(10.02);
+        Item item = Item.from(Price.from(10.02));
+        Item otherItem = Item.from(Price.from(10.02));
 
         assertEquals(item, otherItem);
     }
 
     @Test
     public void shouldReturnValueOfPrice() {
-        Item item = Item.from(10.21);
+        Item item = Item.from(Price.from(10.21));
 
         assertEquals(10.21, item.value(), 0);
     }
-
-    @Test(expected = InvalidItemPriceException.class)
-    public void shouldReturnItemWithZeroValue() {
-        Item expectedItem = Item.from(0.0);
-    }
-
-    @Test(expected = InvalidItemPriceException.class)
-    public void shouldReturnItemWithNull() {
-        Item emptyItem = Item.from(null);
-    }
-
 }

@@ -9,8 +9,8 @@ public class ItemsTest {
     @Test
     public void shouldReturnItemsTotalPrice() {
         Items items = new Items();
-        items.add(Item.from(100.00));
-        items.add(Item.from(102.10));
+        items.add(Item.from(Price.from(100.00)));
+        items.add(Item.from(Price.from(102.10)));
 
         assertEquals(202.10, items.totalPrice(), 0);
     }
@@ -18,8 +18,8 @@ public class ItemsTest {
     @Test
     public void shouldReturnTrueIfAnyItemIsEligibleForDiscount() {
         Items items = new Items();
-        items.add(Item.from(100.00));
-        items.add(Item.from(10.10));
+        items.add(Item.from(Price.from(100.00)));
+        items.add(Item.from(Price.from(10.10)));
 
         assertTrue(items.eligibleForDiscount());
     }
@@ -27,8 +27,8 @@ public class ItemsTest {
     @Test
     public void shouldReturnFalseIfNoItemIsEligibleForDiscount() {
         Items items = new Items();
-        items.add(Item.from(10.00));
-        items.add(Item.from(10.10));
+        items.add(Item.from(Price.from(10.00)));
+        items.add(Item.from(Price.from(10.10)));
 
         assertFalse(items.eligibleForDiscount());
     }
@@ -44,8 +44,8 @@ public class ItemsTest {
     @Test
     public void shouldReturnHowManyItemsArePresent() {
         Items items = new Items();
-        items.add(Item.from(10.00));
-        items.add(Item.from(10.10));
+        items.add(Item.from(Price.from(10.00)));
+        items.add(Item.from(Price.from(10.10)));
 
         assertEquals(2, items.size());
     }

@@ -1,28 +1,21 @@
 package com.parallel.change.kata;
 
-import com.parallel.change.kata.exception.InvalidItemPriceException;
-
 import java.util.Objects;
 
 public class Item {
 
-    private static final int LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT = 100;
-    private static final Double ZERO_PRICE = 0.0;
-    private final Double value;
+    private final Price price;
 
-    private Item(Double value) {
-        this.value = value;
+    private Item(Price price) {
+        this.price = price;
     }
 
-    public static Item from(Double value) {
-        if (Objects.isNull(value) || value.equals(ZERO_PRICE))
-            throw new InvalidItemPriceException(value);
-
-        return new Item(value);
+    public static Item from(Price price) {
+        return new Item(price);
     }
 
     public boolean isEligibleForDiscount() {
-        return this.value >= LEAST_PRICE_ELIGIBLE_FOR_DISCOUNT;
+        return this.price.isEligibleForDiscount();
     }
 
     @Override
@@ -30,15 +23,15 @@ public class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return Double.compare(item.value, value) == 0;
+        return Objects.equals(price, item.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value);
+        return Objects.hash(price);
     }
 
     Double value() {
-        return this.value;
+        return this.price.value();
     }
 }

@@ -7,7 +7,6 @@ import java.util.stream.Stream;
 
 public class Items {
 
-    private static final double ZERO_PRICE = 0.0;
     private final List<Item> items;
 
     public Items() {
@@ -15,7 +14,7 @@ public class Items {
     }
 
     public Double totalPrice() {
-        return prices().reduce(ZERO_PRICE, Double::sum);
+        return prices().reduce(Price.ZERO, Double::sum);
     }
 
     public boolean eligibleForDiscount() {
